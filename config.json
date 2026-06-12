@@ -1,0 +1,15 @@
+{
+  "hotkey": "alt+shift+t",
+  "quit_hotkey": "ctrl+alt+x",
+  "toggle_mode_hotkey": "ctrl+alt+m",
+  "mode": "ai",
+  "target_lang": "vi",
+  "auto_replace": false,
+  "restore_clipboard": true,
+  "models": [
+    "gemma-4-26b-a4b-it",
+    "gemma-4-31b-it",
+    "gemini-3.1-flash-lite",
+    "gemini-2.5-flash"
+  ]
+}
