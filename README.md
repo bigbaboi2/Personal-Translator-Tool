@@ -1,43 +1,116 @@
-### Công cụ dịch thuật cá nhân
-Một công cụ được tạo ra cho công việc dịch thuật và bản địa hóa cá nhân của tôi. Công cụ này hoạt động dựa trên ngữ cảnh và được hỗ trợ bởi trí tuệ nhân tạo.
-"""
-## TransPal — Trợ lý dịch thuật
-========================================================================================
-### Cài đặt (chỉ 1 lần, mở CMD): 
-pip cài đặt bàn phím pyperclip pyautogui google-genai deep-translator python-docx pypdf
-Đặt khóa API (chỉ 1 lần đầu): 
-setx GEMINI_API_KEY "key_cua_ban" 
-(đóng mở lại ứng dụng sau khi setx)
-Chạy: click đúp vào file transpal_gui.pyw là xong, không cần terminal.
-"""
-### ===== Hướng dẫn =========================================================================
-##Dịch văn bản:
+# 📝 TransPal — Trợ lý dịch thuật
 
-Mở bất kỳ ứng dụng nào (trình duyệt, Word, phần mềm trò chuyện...), bôi đen đoạn cần dịch
-Bấm Alt+Shift+T rồi xả tay ra
-Lúc này có 3 lựa chọn ở cửa sổ bật lên số:
-Chỉnh sửa bản dịch trực tiếp trong ô nếu chưa tương ứng, rồi nhấn
-"Thay thế" (hoặc Enter) → đoạn bôi đen sẽ được dán bằng bản dịch
-"Chỉ sao chép" → bản dịch nằm trong clipboard, tự dán
-"Đóng" (hoặc Esc) → bỏ qua, không làm gì
+> Công cụ dịch thuật và bản địa hóa cá nhân được hỗ trợ bởi AI và ngữ cảnh tùy chỉnh.
 
-##Các phím tắt khác:
+---
 
-Ctrl+Alt+M: thay đổi nhanh giữa AI chế độ (chậm hơn nhưng hiểu ngữ cảnh) và dịch cơ bản Google (nhanh, không cần thiết chìa khóa)
-Ctrl+Alt+X: tắt tập lệnh
+## ⚙️ Cài đặt (chỉ thực hiện một lần)
 
-Về tập tin cảnh — đây là phần quan trọng nhất để AI dịch đúng ý
-Khi chạy lần đầu, tập lệnh đã tự động tạo tệp context.md nằm cùng thư mục với transpal.py. Mở nó bằng Notepad (hoặc VS Code) được chỉnh sửa, ví dụ bạn có thể viết:
-markdown# Thuật toán hướng dẫn
-- Dịch tự nhiên, văn phong Việt Nam, Khoa hô "bạn".
-- Đây là tài liệu về game MMORPG, chứa đựng các từ: buff, debuff, raid, dungeon.
-- "Guild" dịch là "bang hội", "quest" dịch là "nhiệm vụ".
-- Tên nhân vật được đặt riêng, không có phiên bản âm thanh.
-- Giọng văn trẻ trung, không quá trang trọng.
-Một số điểm cần biết:
+### Cài đặt thư viện
 
-Edit context.md không cần khởi động lại tập lệnh — tệp có thể được đọc lại mỗi lần bạn nhấn phím dịch, nên chỉnh sửa xong việc lưu lại (Ctrl+S) là lần dịch tiếp theo được sử dụng ngay.
-Viết những gì cũng được: quy tắc dịch, bảng thuật ngữ, mô tả bối cảnh tài liệu ("đây là hợp đồng pháp", "đây là truyện tiên hiệp")... AI đọc và làm theo.
-Nếu có hướng dẫn tệp sẵn ở dạng .txt thì sao chép nội dung phong cách vào context.md hoặc nhập xong. Còn nếu là PDF/Word thì hiện tại cần sao chép văn bản thủ công
-Lưu ý chế độ AI chỉ áp dụng ngữ cảnh; cơ bản dịch chế độ (Google) thì không đọc được tệp này vì nó chỉ là máy dịch tĩnh.
-*Đối với các mô hình AI, có thể điều chỉnh mã để lấy lại tốc độ và độ chính xác tối đa, công cụ này đang sử dụng các mô hình miễn phí, tốc độ ưu tiên và RPM,RPD cao*
+```bash
+pip install keyboard pyperclip pyautogui google-genai deep-translator python-docx pypdf
+```
+
+### Thiết lập API
+
+```bash
+setx GEMINI_API_KEY "YOUR_API_KEY"
+```
+
+> Sau khi thiết lập API, hãy đóng và mở lại ứng dụng.
+
+### Khởi chạy
+
+Mở trực tiếp:
+
+```text
+transpal_gui.pyw
+```
+
+Không cần mở Terminal hoặc CMD.
+
+---
+
+## 📖 Hướng dẫn
+
+### Dịch văn bản
+
+1. Mở bất kỳ ứng dụng nào (trình duyệt, Word, phần mềm trò chuyện,...)
+2. Bôi đen đoạn văn bản cần dịch.
+3. Nhấn `Alt + Shift + T`.
+4. Cửa sổ dịch sẽ xuất hiện với 3 lựa chọn:
+
+- **Thay thế** (hoặc Enter): thay thế nội dung đã chọn bằng bản dịch.
+- **Chỉ sao chép**: lưu bản dịch vào Clipboard.
+- **Đóng** (hoặc Esc): hủy thao tác.
+
+---
+
+## ⌨️ Các phím tắt
+
+| Phím tắt | Chức năng |
+|-----------|-----------|
+| Alt + Shift + T | Dịch văn bản đã chọn |
+| Ctrl + Alt + M | Chuyển đổi AI / Google Translate |
+| Ctrl + Alt + X | Thoát chương trình |
+
+---
+
+## 🧠 Về tệp ngữ cảnh (context.md)
+
+Đây là thành phần quan trọng nhất để AI hiểu đúng nội dung cần dịch.
+
+Khi chạy lần đầu, chương trình sẽ tự động tạo:
+
+```text
+context.md
+```
+
+trong cùng thư mục với TransPal.
+
+Bạn có thể chỉnh sửa bằng:
+
+- Notepad
+- VS Code
+- Notepad++
+- Hoặc bất kỳ trình soạn thảo văn bản nào
+
+Ví dụ:
+
+```md
+# Hướng dẫn dịch
+
+- Dịch tự nhiên, văn phong Việt Nam.
+- Xưng hô là "bạn".
+- Đây là tài liệu game MMORPG.
+- Guild → Bang hội
+- Quest → Nhiệm vụ
+- Giữ nguyên tên nhân vật.
+```
+*Ngoài ra có thể import trực tiếp trong giao diện sử dụng, ai hỗ trợ tách, chuyển đổi, merged với quy tắc context có sẵn*
+### Một số điểm cần biết
+
+- Không cần khởi động lại ứng dụng sau khi sửa `context.md`.
+- Chỉ cần lưu tệp (`Ctrl + S`).
+- Lần dịch tiếp theo sẽ tự động sử dụng nội dung mới.
+
+Bạn có thể thêm:
+
+- Quy tắc dịch
+- Glossary
+- Translation Memory
+- Mô tả dự án
+- Hướng dẫn văn phong
+- Thuật ngữ chuyên ngành
+
+> Lưu ý: Chế độ Google Translate không sử dụng nội dung từ `context.md`.
+> Chỉ chế độ AI mới áp dụng ngữ cảnh và quy tắc dịch.
+
+---
+
+## 💡 Ghi chú
+
+Đối với các mô hình AI, có thể tùy chỉnh mã nguồn để cân bằng giữa tốc độ, độ chính xác, giới hạn RPM/RPD và chi phí sử dụng.
+
+Phiên bản hiện tại ưu tiên các mô hình miễn phí có tốc độ phản hồi cao và hạn mức sử dụng lớn.
