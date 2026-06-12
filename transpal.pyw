@@ -1,17 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-TransPal — Trợ lý dịch thuật (bản GUI, tiếng Việt có dấu, chạy bằng double-click)
-=================================================================================
-Cài đặt (chỉ 1 lần, mở CMD):
-  pip install keyboard pyperclip pyautogui google-genai deep-translator python-docx pypdf
-
-Đặt API key (chỉ 1 lần — cách bền vững, không cần gõ lại):
-  setx GEMINI_API_KEY "key_cua_ban"
-  (đóng mở lại ứng dụng sau khi setx)
-
-Chạy: double-click vào file transpal_gui.pyw này là xong, không cần terminal.
-"""
-
 import os
 import sys
 import json
@@ -24,7 +11,6 @@ import traceback
 import tkinter as tk
 from tkinter import ttk, filedialog, scrolledtext, messagebox
 
-# --- import thư viện ngoài, nếu thiếu thì báo bằng hộp thoại (vì không có console) ---
 try:
     import keyboard
     import pyperclip
@@ -756,7 +742,6 @@ def main():
         read_context_file()
         App().run()
     except Exception:
-        # Chạy bằng .pyw không có console → hiện lỗi bằng hộp thoại
         err = traceback.format_exc()
         try:
             r = tk.Tk(); r.withdraw()
